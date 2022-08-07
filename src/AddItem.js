@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 
-function AddItem( {items, setItems, setFiltering}){
+function AddItem( {setItems, setFiltering}){
     const itemNameRef = useRef()
     const itemCatRef = useRef()
 
@@ -33,10 +33,10 @@ function AddItem( {items, setItems, setFiltering}){
                     ref={itemNameRef}
                 />
                 <select ref={itemCatRef} >
+                    <option value="Meat">Meat</option>
                     <option value="Fruit">Fruit</option>
                     <option value="Vegetable">Vegetable</option>
                     <option value="Dairy">Dairy</option>
-                    <option value="Meat">Meat</option>
                 </select>
             </label>               
             <button type="submit" className='btn'>Add</button>

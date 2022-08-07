@@ -1,18 +1,26 @@
 import './App.css';
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useState} from 'react'
 import CategorySection from './CategorySection'
-import ItemList from './ItemList'
-import AddItem from './AddItem'
 import Groceries from './Groceries'
-import { v4 as uuidv4 } from 'uuid'
+
+const LOCAL_STORAGE_KEY = 'groceryItems.itemss'
 
 function App() {
-  const [items, setItems] = useState([{id: uuidv4(), name: "Apple", category: "Fruit"},{id: uuidv4(), name: "Banana", category: "Fruit"},{id: uuidv4(), name: "Carrot", category: "Vegetable"},{id: uuidv4(), name: "Milk", category: "Dairy"},{id: uuidv4(), name: "Bacon", category: "Meat"} ])
+  const [items, setItems] = useState(() => {
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY)
+    const initialValue = JSON.parse(saved)
+    return initialValue || []
+  })
+  
   const [filtering, setFiltering] = useState(false)
   const [filtered, setFiltered] = useState()
   let display = (filtering) ? filtered : items
 
+
+  useEffect(() => {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items))
+  }, [items])
 
 
   function categoryFilter(cat){

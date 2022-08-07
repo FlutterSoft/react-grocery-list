@@ -15,7 +15,7 @@ function CategorySection({onClick, setFiltering}){
                 <CategoryButton onClick={() => onClick("Vegetable")} icon={vegetableIcon} />
                 <CategoryButton onClick={() => onClick("Dairy")} icon={dairyIcon} />
             </div>
-            <button className="btn" onClick={() => setFiltering(false)}>Reset</button>
+            <button className="btn" onClick={() => setFiltering(false)}>Show All</button>
 
         </div>
 

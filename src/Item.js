@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import meatIcon from './images/meat.png'
 import fruitIcon from './images/fruit.png'
 import vegetableIcon from './images/vegetable.png'
 import dairyIcon from './images/dairy.png'
+import deleteButtonIcon from './images/delete.png'
 
-function Item( {item} ){
+function Item( {items, item, deleteItem, setItems} ){
+    const itemRef = useRef()
     let icon
+
+    function deleteItem(id){
+        const newItems = [...items].filter(item => item.id != id)
+        setItems(newItems)
+    }
+
     if (item.category === "Fruit"){
         icon = fruitIcon
     }
@@ -19,9 +27,16 @@ function Item( {item} ){
         icon = dairyIcon
     }    
     return(
-        <div className="Item">
-            <img className="ItemImg" src={icon}/> {item.name}       
-        </div>
+        <li className="Item">
+            <img className="ItemImg" src={icon}/> {item.name} 
+            <button 
+                ref={itemRef} 
+                className="btn" 
+                id="DeleteBtn" 
+                onClick={() => deleteItem(item.id)}>
+                    <img className="DeleteIcon" src={deleteButtonIcon}/>
+            </button>     
+        </li>
     )
 }
 
