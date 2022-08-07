@@ -18,7 +18,7 @@ function Item( {items, item, deleteItem, setItems, filtering, setFiltering} ){
         const newItems = [...items]
         let current = newItems.find( item => item.id == id )
         let currentCategory = categories.find(e => e.category == current.category)
-        let next = currentCategory.index < 3 ? currentCategory.index + 1 : 0
+        let next = currentCategory.index < categories.length-1 ? currentCategory.index + 1 : 0
         let nextCategory = categories.find(e => e.index == next)
         current.category = nextCategory.category
         console.log(current)
