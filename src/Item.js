@@ -5,7 +5,7 @@ import vegetableIcon from './images/vegetable.png'
 import dairyIcon from './images/dairy.png'
 import deleteButtonIcon from './images/delete.png'
 
-function Item( {items, item, deleteItem, setItems, setFiltering} ){
+function Item( {items, item, deleteItem, setItems, filtering, setFiltering} ){
     let icon
     let categories =[{index: 0, category: "Meat"}, {index: 1, category: "Fruit"},{index: 2, category: "Vegetable"}, {index: 3, category: "Dairy"}]
 
@@ -23,6 +23,10 @@ function Item( {items, item, deleteItem, setItems, setFiltering} ){
         current.category = nextCategory.category
         console.log(current)
         setItems(newItems)
+        if(filtering){
+            setFiltering(false)
+        }
+        
     }
 
     if (item.category === "Fruit"){

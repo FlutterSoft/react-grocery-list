@@ -24,10 +24,7 @@ function App() {
   }, [items])
 
 
-  function categoryFilter(cat){
-    setFiltering(true)
-    setFiltered(items.filter(item => item.category == cat))
-  }
+
 
   return (
     <div className="App">
@@ -37,9 +34,9 @@ function App() {
       <p>Click the icon next to a food name to cycle through the categories.</p>
       <span>And don't worry, you won't lose your list if you close the page!</span>
       <div className="ListSection">
-        <CategorySection onClick={categoryFilter} setFiltering={setFiltering} />
+        <CategorySection items={items} setFiltered={setFiltered} setFiltering={setFiltering} />
         <AddItem items={items} setItems={setItems} setFiltering={setFiltering} />
-        <ItemList display={display} setItems={setItems} items={items} setFiltering={setFiltering}/>   
+        <ItemList display={display} setItems={setItems} items={items} filtering={filtering} setFiltering={setFiltering}/>   
       </div>
 
     </div>
