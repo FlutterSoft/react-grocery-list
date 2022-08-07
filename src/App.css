@@ -3,6 +3,8 @@
 }
 html{
   background-color: #fdfcf6;
+  color: rgb(51, 51, 54);
+  /* color:black; */
 }
 
 .CategorySection{
@@ -17,7 +19,11 @@ html{
   align-items: center;
   margin: auto;
 }
-
+span{
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.408);
+}
 .Buttons{
   display: flex;
   justify-content: space-evenly;
@@ -119,7 +125,7 @@ form input, form select{
 }
 
 .ListSection{
-  margin: auto;
+  margin: 25px auto;
   background-color: #ff96a7bd;
   max-width: 720px;
   padding-bottom: 50px;

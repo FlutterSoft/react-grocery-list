@@ -35,6 +35,7 @@ function App() {
       <p>Enter food name, select category and click add!</p>
       <p>Click one of the four category icons to filter by that category. </p>
       <p>Click the icon next to a food name to cycle through the categories.</p>
+      <span>And don't worry, you won't lose your list if you close the page!</span>
       <div className="ListSection">
         <CategorySection onClick={categoryFilter} setFiltering={setFiltering} />
         <AddItem items={items} setItems={setItems} setFiltering={setFiltering} />
