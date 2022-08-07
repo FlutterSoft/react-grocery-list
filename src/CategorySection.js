@@ -5,13 +5,14 @@ import fruitIcon from './images/fruit.png'
 import vegetableIcon from './images/vegetable.png'
 import dairyIcon from './images/dairy.png'
 
-function CategorySection(){
+function CategorySection({items, onClick}){
+
     return(
         <div className="CategorySection">
-            <CategoryButton icon={meatIcon} />
-            <CategoryButton icon={fruitIcon} />
-            <CategoryButton icon={vegetableIcon} />
-            <CategoryButton icon={dairyIcon} />
+            <CategoryButton onClick={() => onClick("Meat")} icon={meatIcon} />
+            <CategoryButton onClick={() => onClick("Fruit")} icon={fruitIcon} />
+            <CategoryButton onClick={() => onClick("Vegetable")} icon={vegetableIcon} />
+            <CategoryButton onClick={() => onClick("Dairy")} icon={dairyIcon} />
         </div>
 
     )

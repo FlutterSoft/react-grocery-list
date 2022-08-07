@@ -1,15 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import AddItem from './AddItem'
 import ItemList from './ItemList'
 
-function Groceries(){
-    const [items, setItems] = useState([{ id: 1, name: 'Apples', category: 'Fruit'},{ id: 2, name: 'Potatoes', category: 'Vegetables'}])
+const LOCAL_STORAGE_KEY = 'groceryItems.itemss'
+
+function Groceries({items, setItems}){
     return(
         <div>
             <AddItem items={items} setItems={setItems} />
-            <ItemList items={items}  />            
+            <ItemList setItems={setItems} items={items}  />            
         </div>
 
     )
 }
 export default Groceries
+
+
+
+
+    // useEffect(() => {
+    //     const storedItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+    //     if (storedItems) setItems(storedItems)
+    // }, [])
+
+    // useEffect(() => {
+    //     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items))
+    // }, [items])

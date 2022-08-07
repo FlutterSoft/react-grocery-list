@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
 
 function AddItem( {items, setItems}){
-
     const itemNameRef = useRef()
     const itemCatRef = useRef()
 
@@ -13,11 +14,11 @@ function AddItem( {items, setItems}){
         if(name === '') return 
 
         setItems(prevItems => {
-            return [...prevItems, {id: name, name: name, category: category}]
+            return [...prevItems, {id: uuidv4(), name: name, category: category}]
         })
+
         itemNameRef.current.value = null
     }
-
 
     return(
         <div>
@@ -33,6 +34,8 @@ function AddItem( {items, setItems}){
                 <select ref={itemCatRef} >
                     <option value="Fruit">Fruit</option>
                     <option value="Vegetable">Vegetable</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Meat">Meat</option>
                 </select>
             </label>               
             <button type="submit">Add</button>
