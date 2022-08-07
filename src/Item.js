@@ -20,7 +20,7 @@ function Item( {item} ){
     }    
     return(
         <div className="Item">
-            <img className="ItemImg" src={icon}/> {item.name} - {item.category}       
+            <img className="ItemImg" src={icon}/> {item.name}       
         </div>
     )
 }

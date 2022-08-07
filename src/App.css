@@ -28,9 +28,16 @@ html{
   height: 200px;
   max-width: 720px;
   display:flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   margin: auto;
+}
+
+.Buttons{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .CategoryButton{
@@ -40,6 +47,7 @@ html{
   border: 3px white;
   padding: 5px;
   cursor: pointer;
+  margin: 10px;
 }
 .CategoryButton:hover{
   background-color: white;
@@ -64,4 +72,18 @@ html{
   margin: 0 1em;
   width: 30px;
   height: 30px;
+}
+
+.btn{
+  background-color: white;
+  border: 1px solid black;
+  width: 5em;
+  text-align: center;
+  padding: 1em;
+  margin: 0 1em;
+}
+
+form *{
+  padding: 0.5em;
+  margin: 1px;
 }

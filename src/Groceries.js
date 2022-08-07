@@ -4,11 +4,11 @@ import ItemList from './ItemList'
 
 const LOCAL_STORAGE_KEY = 'groceryItems.itemss'
 
-function Groceries({items, setItems}){
+function Groceries({items, display, setItems, setFiltering}){
     return(
         <div>
-            <AddItem items={items} setItems={setItems} />
-            <ItemList setItems={setItems} items={items}  />            
+            <AddItem items={items} setItems={setItems} setFiltering={setFiltering} />
+            <ItemList display={display} setItems={setItems}  />            
         </div>
 
     )

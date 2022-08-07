@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 
-function AddItem( {items, setItems}){
+function AddItem( {items, setItems, setFiltering}){
     const itemNameRef = useRef()
     const itemCatRef = useRef()
 
     function handleSubmit(e){
+        setFiltering(false)
         const name = itemNameRef.current.value
         const category = itemCatRef.current.value
 
@@ -38,7 +39,7 @@ function AddItem( {items, setItems}){
                     <option value="Meat">Meat</option>
                 </select>
             </label>               
-            <button type="submit">Add</button>
+            <button type="submit" className='btn'>Add</button>
         </form>
     </div>
     )
