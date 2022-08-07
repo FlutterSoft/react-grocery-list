@@ -2,7 +2,8 @@ import './App.css';
 import React, {useEffect} from 'react'
 import {useState} from 'react'
 import CategorySection from './CategorySection'
-import Groceries from './Groceries'
+import AddItem from './AddItem'
+import ItemList from './ItemList'
 
 const LOCAL_STORAGE_KEY = 'groceryItems.itemss'
 
@@ -28,11 +29,17 @@ function App() {
     setFiltered(items.filter(item => item.category == cat))
   }
 
-
   return (
     <div className="App">
-      <CategorySection onClick={categoryFilter} setFiltering={setFiltering} />
-      <Groceries display={display} items={items} setItems={setItems} setFiltering={setFiltering} />
+      <h1>Grocery List</h1>
+      <p>Enter food name, select category and click add!</p>
+      <p>Click one of the four category icons to filter by that category. </p>
+      <p>Click the icon next to a food name to cycle through the categories.</p>
+      <div className="ListSection">
+        <CategorySection onClick={categoryFilter} setFiltering={setFiltering} />
+        <AddItem items={items} setItems={setItems} setFiltering={setFiltering} />
+        <ItemList display={display} setItems={setItems} items={items} setFiltering={setFiltering}/>   
+      </div>
 
     </div>
   );

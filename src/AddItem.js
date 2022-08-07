@@ -25,8 +25,6 @@ function AddItem( {setItems, setFiltering}){
         <div>
         <form onSubmit={handleSubmit}>
             <h3>Add New Grocery Item</h3>
-            <label>
-                Name:
                 <input 
                     type="text" 
                     placeholder="Enter Food Name" 
@@ -38,7 +36,6 @@ function AddItem( {setItems, setFiltering}){
                     <option value="Vegetable">Vegetable</option>
                     <option value="Dairy">Dairy</option>
                 </select>
-            </label>               
             <button type="submit" className='btn'>Add</button>
         </form>
     </div>
