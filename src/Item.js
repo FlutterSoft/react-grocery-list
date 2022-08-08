@@ -5,26 +5,28 @@ import vegetableIcon from './images/vegetable.png'
 import dairyIcon from './images/dairy.png'
 import deleteButtonIcon from './images/delete.png'
 
-function Item( {items, item, deleteItem, setItems, filtering, setFiltering} ){
+function Item( {items, item, setItems, filtering, updateCategory, currentCategoryFilter} ){
     let icon
     let categories =[{index: 0, category: "Meat"}, {index: 1, category: "Fruit"},{index: 2, category: "Vegetable"}, {index: 3, category: "Dairy"}]
 
     function deleteItem(id){
-        const newItems = [...items].filter(item => item.id != id)
+        const newItems = [...items].filter(item => item.id !== id)
         setItems(newItems)
-        setFiltering(false)
+        // Doesn't update filter if you delete an item because it doesn't update state until re-render? How to fix?
+        // if(filtering){
+        //     updateCategory(currentCategoryFilter)
+        // }    
     }
     function changeCategory(id){
         const newItems = [...items]
-        let current = newItems.find( item => item.id == id )
-        let currentCategory = categories.find(e => e.category == current.category)
+        let current = newItems.find( item => item.id === id )
+        let currentCategory = categories.find(e => e.category === current.category)
         let next = currentCategory.index < categories.length-1 ? currentCategory.index + 1 : 0
-        let nextCategory = categories.find(e => e.index == next)
+        let nextCategory = categories.find(e => e.index === next)
         current.category = nextCategory.category
-        console.log(current)
         setItems(newItems)
         if(filtering){
-            setFiltering(false)
+            updateCategory(currentCategoryFilter)
         }
         
     }

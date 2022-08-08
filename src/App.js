@@ -13,7 +13,9 @@ function App() {
     const initialValue = JSON.parse(saved)
     return initialValue || []
   })
-  
+
+  const [currentCat, setCurrentCat] = useState('')
+
   const [filtering, setFiltering] = useState(false)
   const [filtered, setFiltered] = useState()
   let display = (filtering) ? filtered : items
@@ -23,6 +25,15 @@ function App() {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items))
   }, [items])
 
+  function updateCategory(cat){
+      setCurrentCat(cat)
+      categoryFilter(cat)
+  }
+
+  function categoryFilter(cat){
+    setFiltering(true)
+    setFiltered(items.filter(item => item.category == cat))
+  }
 
 
 
@@ -34,9 +45,9 @@ function App() {
       <p>Click the icon next to a food name to cycle through the categories.</p>
       <span>And don't worry, you won't lose your list if you close the page!</span>
       <div className="ListSection">
-        <CategorySection items={items} setFiltered={setFiltered} setFiltering={setFiltering} />
+        <CategorySection items={items} setFiltered={setFiltered} setFiltering={setFiltering} currentCat={currentCat} setCurrentCat={setCurrentCat} updateCategory={updateCategory} />
         <AddItem items={items} setItems={setItems} setFiltering={setFiltering} />
-        <ItemList display={display} setItems={setItems} items={items} filtering={filtering} setFiltering={setFiltering}/>   
+        <ItemList display={display} setItems={setItems} items={items} filtering={filtering} setFiltering={setFiltering} currentCat={currentCat} setCurrentCat={setCurrentCat} updateCategory={updateCategory} currentCategoryFilter={currentCat} />   
       </div>
 
     </div>
