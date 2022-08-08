@@ -25,14 +25,14 @@ function App() {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items))
   }, [items])
 
-  function updateCategory(cat){
+  function updateCategory(cat, toFilter = items){
       setCurrentCat(cat)
-      categoryFilter(cat)
+      categoryFilter(cat, toFilter)
   }
 
-  function categoryFilter(cat){
+  function categoryFilter(cat, toFilter){
     setFiltering(true)
-    setFiltered(items.filter(item => item.category == cat))
+    setFiltered(toFilter.filter(item => item.category == cat))
   }
 
 

@@ -12,11 +12,11 @@ function Item( {items, item, setItems, filtering, updateCategory, currentCategor
     function deleteItem(id){
         const newItems = [...items].filter(item => item.id !== id)
         setItems(newItems)
-        // Doesn't update filter if you delete an item because it doesn't update state until re-render? How to fix?
-        // if(filtering){
-        //     updateCategory(currentCategoryFilter)
-        // }    
+        if(filtering){
+            updateCategory(currentCategoryFilter, newItems)
+        }    
     }
+
     function changeCategory(id){
         const newItems = [...items]
         let current = newItems.find( item => item.id === id )
