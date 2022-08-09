@@ -28,7 +28,6 @@ function Item( {items, item, setItems, filtering, updateCategory, currentCategor
         if(filtering){
             updateCategory(currentCategoryFilter)
         }
-        
     }
 
     if (item.category === "Fruit"){
