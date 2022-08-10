@@ -5,6 +5,7 @@ import CategorySection from './CategorySection'
 import AddItem from './AddItem'
 import ItemList from './ItemList'
 
+// Local storage key for storing list
 const LOCAL_STORAGE_KEY = 'groceryItems.itemss'
 
 function App() {
