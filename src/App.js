@@ -8,6 +8,7 @@ import ItemList from './ItemList'
 // Local storage key for storing list
 const LOCAL_STORAGE_KEY = 'groceryItems.itemss'
 
+// Main app
 function App() {
   const [items, setItems] = useState(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY)
@@ -15,29 +16,35 @@ function App() {
     return initialValue || []
   })
 
+  // State for current category filtering
   const [currentCat, setCurrentCat] = useState('')
 
+  // State for if currently filtering by category
   const [filtering, setFiltering] = useState(false)
+
+  // State for current filtered items
   const [filtered, setFiltered] = useState()
+
+  // Sets the list to be rendered to either the items state or filtering
   let display = (filtering) ? filtered : items
 
-
+  // Set local storage item to the items list whenever [items] changes
   useEffect(() => {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items))
   }, [items])
 
+  // Function to change state of current category
   function updateCategory(cat, toFilter = items){
       setCurrentCat(cat)
       categoryFilter(cat, toFilter)
   }
-
+  // Function to set category filtered list of items
   function categoryFilter(cat, toFilter){
     setFiltering(true)
     setFiltered(toFilter.filter(item => item.category == cat))
   }
 
-
-
+  // JSX Return
   return (
     <div className="App">
       <h1>Grocery List</h1>
@@ -50,7 +57,6 @@ function App() {
         <AddItem items={items} setItems={setItems} setFiltering={setFiltering} />
         <ItemList display={display} setItems={setItems} items={items} filtering={filtering} setFiltering={setFiltering} currentCat={currentCat} setCurrentCat={setCurrentCat} updateCategory={updateCategory} currentCategoryFilter={currentCat} />   
       </div>
-
     </div>
   );
 }
