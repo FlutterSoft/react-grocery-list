@@ -27,8 +27,18 @@ function Item( {items, item, setItems, filtering, updateCategory, currentCategor
         let currentCategory = categories.find(e => e.category === current.category) // find current category
         let next = currentCategory.index < categories.length-1 ? currentCategory.index + 1 : 0 // determine what the next category index should be 
         let nextCategory = categories.find(e => e.index === next) // find next category in categories array by index
-        current.category = nextCategory.category // update current item category
-        setItems(newItems) // set State of items
+        
+        setItems(items.map(item => {
+            if(item.id === current.id){
+                return {id: item.id, name: item.name, category: nextCategory.category}
+            }
+            else{
+                return item
+            }
+        }))
+        // current.category = nextCategory.category // update current item category
+        // setItems(newItems) // set State of items
+        
         if(filtering){
             updateCategory(currentCategoryFilter) // if filter is on then re run the filter
         }
@@ -48,7 +58,7 @@ function Item( {items, item, setItems, filtering, updateCategory, currentCategor
     }    
     return(
         <li className="Item">
-            <img className="ItemImg" onClick={() => changeCategory(item.id)} src={icon}/> {item.name} 
+            <img className="ItemImg" draggable="false" onClick={() => changeCategory(item.id)} src={icon}/> {item.name} 
             <button 
                 className="btn" 
                 id="DeleteBtn" 
