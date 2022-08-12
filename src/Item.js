@@ -20,6 +20,7 @@ function Item( {items, item, setItems, filtering, updateCategory, currentCategor
     }
 
     // function to change the category of the current item
+    // ---- This mutates the array! Bad ----
     function changeCategory(id){
         const newItems = [...items] // copy items array
         let current = newItems.find( item => item.id === id ) // find item clicked
