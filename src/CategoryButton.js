@@ -5,6 +5,7 @@ function CategoryButton({icon, onClick}){
         <button className="CategoryButton"
             onClick={onClick}>
             <img className="CategoryIcon" src={icon}></img>
+            <span>{icon.slice(icon.indexOf('media/')+6, icon.indexOf('.'))}</span>
         </button>
     )
 }

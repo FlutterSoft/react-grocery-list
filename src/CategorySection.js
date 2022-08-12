@@ -9,6 +9,7 @@ function CategorySection({ setFiltering, updateCategory }){
 
     return(
         <div className="CategorySection">
+            <h2>Filter By Category</h2>
             <div className="Buttons">
                 <CategoryButton onClick={() => updateCategory("Meat")} icon={meatIcon} />
                 <CategoryButton onClick={() => updateCategory("Fruit")} icon={fruitIcon} />
