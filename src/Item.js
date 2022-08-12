@@ -7,8 +7,10 @@ import deleteButtonIcon from './images/delete.png'
 
 function Item( {items, item, setItems, filtering, updateCategory, currentCategoryFilter} ){
     let icon
+    // set array of objects containing the different categories 
     let categories =[{index: 0, category: "Meat"}, {index: 1, category: "Fruit"},{index: 2, category: "Vegetable"}, {index: 3, category: "Dairy"}]
 
+    // function to delete the item selected when click on X
     function deleteItem(id){
         const newItems = [...items].filter(item => item.id !== id)
         setItems(newItems)
@@ -17,19 +19,20 @@ function Item( {items, item, setItems, filtering, updateCategory, currentCategor
         }    
     }
 
+    // function to change the category of the current item
     function changeCategory(id){
-        const newItems = [...items]
-        let current = newItems.find( item => item.id === id )
-        let currentCategory = categories.find(e => e.category === current.category)
-        let next = currentCategory.index < categories.length-1 ? currentCategory.index + 1 : 0
-        let nextCategory = categories.find(e => e.index === next)
-        current.category = nextCategory.category
-        setItems(newItems)
+        const newItems = [...items] // copy items array
+        let current = newItems.find( item => item.id === id ) // find item clicked
+        let currentCategory = categories.find(e => e.category === current.category) // find current category
+        let next = currentCategory.index < categories.length-1 ? currentCategory.index + 1 : 0 // determine what the next category index should be 
+        let nextCategory = categories.find(e => e.index === next) // find next category in categories array by index
+        current.category = nextCategory.category // update current item category
+        setItems(newItems) // set State of items
         if(filtering){
-            updateCategory(currentCategoryFilter)
+            updateCategory(currentCategoryFilter) // if filter is on then re run the filter
         }
     }
-
+    // set icon variable for it to be read by src in list of each item
     if (item.category === "Fruit"){
         icon = fruitIcon
     }
