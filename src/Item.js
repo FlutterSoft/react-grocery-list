@@ -48,7 +48,7 @@ function Item( {items, item, setItems, filtering, updateCategory, currentCategor
     }    
     return(
         <li className="Item">
-            <img className="ItemImg" onClick={() => changeCategory(item.id)} src={icon}/> {item.name} 
+            <img className="ItemImg" draggable="false" onClick={() => changeCategory(item.id)} src={icon}/> {item.name} 
             <button 
                 className="btn" 
                 id="DeleteBtn" 
