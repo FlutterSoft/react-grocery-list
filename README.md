@@ -7,9 +7,7 @@ A React project that allows you to add grocery items, change category of items, 
 
 ## How It's Made:
 
-**Tech used:** React, CSS
-
-React, Javascript and CSS.
+**Tech used:** React, Javascript, CSS, Local Storage.
 
 ## Optimizations
 
